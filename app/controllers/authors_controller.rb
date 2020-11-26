@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   def index
-    authors = Author.includes(author::courses)
+    authors = Author.includes(:courses)
     render json: authors
   end
 
