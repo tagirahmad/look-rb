@@ -13,10 +13,21 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show_related_courses
+    name = params[:name]
+    # courses = Category.find_by!(name: category_params[:name]).courses
+    courses = Category.find_by!(name: name).courses
+    if not courses.blank?
+      render json: courses
+    else
+      render json: courses.errors, status: :unprocessable_entity
+    end
+  end
+
   def show
     category = Category.find(params[:id])
     if not category.blank?
-      render json: category, include: %w[course.lessons course.you_learns]
+      # render json: category, include: %w[course.lessons course.you_learns]
       # render json: category, include: '**'
       render json: category
     else

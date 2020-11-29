@@ -4,6 +4,16 @@ class CoursesController < ApplicationController
     render json: courses, each_serializer: CourseSerializer
   end
 
+  # def related
+  #   courses = Course.where(category_id: category_id)
+  #   if not courses.blank?
+  #     # render json: ['result': author]
+  #     render json: courses, each_serializer: CourseSerializer
+  #   else
+  #     render json: courses.errors, status: :unprocessable_entity
+  #   end
+  # end
+
   def create
     course = Course.create(courses_params)
     if course.persisted?
