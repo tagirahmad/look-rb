@@ -1,3 +1,5 @@
+# require 'pry'
+
 class CategoriesController < ApplicationController
   def index
     categories = Category.includes(:courses)
@@ -17,6 +19,7 @@ class CategoriesController < ApplicationController
     name = params[:name]
     # courses = Category.find_by!(name: category_params[:name]).courses
     courses = Category.find_by!(name: name).courses
+    # binding.pry
     if not courses.blank?
       render json: courses
     else
