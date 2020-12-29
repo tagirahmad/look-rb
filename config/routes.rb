@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :courses, :authors, :lessons, :you_learns, :categories
 
   resource :users, only: [:create]
@@ -9,6 +10,12 @@ Rails.application.routes.draw do
   #   get  'show_related_courses', on: :collection, param: :name
   # end
 
-  get "/categories/related_classes/:name", to: "categories#show_related_courses"
+  # mount RailsAdmin::Engine => "/admin", :as => "rails_admin"
+  # devise_for :users
+  # root :to => "rails_admin::Main#dashboard"
 
+  # # https://github.com/sferik/rails_admin/issues/362
+  # match ":controller(/:action(/:id(.:format)))"
+
+  get "/categories/related_classes/:name", to: "categories#show_related_courses"
 end
