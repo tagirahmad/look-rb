@@ -1,6 +1,7 @@
 class YouLearnsController < ApplicationController
     def index
-      you_learns = YouLearn.includes(:course)
+      # you_learns = YouLearn.includes(:course)
+      you_learns = YouLearn.all
       render json: you_learns
     end
 

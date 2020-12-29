@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_173635) do
+ActiveRecord::Schema.define(version: 2020_12_29_140059) do
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(version: 2020_11_09_173635) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "trailer"
     t.string "image"
+    t.integer "author_id", null: false
+    t.integer "category_id", null: false
+    t.index ["author_id"], name: "index_courses_on_author_id"
+    t.index ["category_id"], name: "index_courses_on_category_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -62,6 +66,8 @@ ActiveRecord::Schema.define(version: 2020_11_09_173635) do
     t.index ["course_id"], name: "index_you_learns_on_course_id"
   end
 
+  add_foreign_key "courses", "authors"
+  add_foreign_key "courses", "categories"
   add_foreign_key "lessons", "courses"
   add_foreign_key "you_learns", "courses"
 end

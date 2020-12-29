@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
   def index
-    lessons = Lesson.includes(:course)
+    # lessons = Lesson.includes(:course)
+    lessons = Lesson.all
     render json: lessons
   end
 

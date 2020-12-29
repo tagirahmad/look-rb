@@ -3,7 +3,9 @@
 class CategoriesController < ApplicationController
   def index
     categories = Category.includes(:courses)
+    # categories = Category.all
     render json: categories, include: %w[course.lessons course.you_learns course.author]
+    # render json: categories
   end
 
   def create
