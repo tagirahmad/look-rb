@@ -1,7 +1,8 @@
 class CoursesController < ApplicationController
   def index
-    # courses = Course.includes(:author, :you_learns, :lessons, :category)
-    courses = Course.all
+    # courses = Course.includes(:authors, :you_learns, :lessons, :categories)
+    courses = Course.includes( :you_learns, :lessons)
+    # courses = Course.all
     render json: courses, each_serializer: CourseSerializer
   end
 
@@ -28,7 +29,7 @@ class CoursesController < ApplicationController
     course = Course.find(params[:id])
     if not course.blank?
       # render json: ['result': author]
-      render json: course, serializer: ShowCourseSerializer
+      render json: course, serializer: CourseSerializer
     else
       render json: course.errors, status: :unprocessable_entity
     end
