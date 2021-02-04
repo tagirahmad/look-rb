@@ -8,6 +8,20 @@ RailsAdmin.config do |config|
     end
   end
 
+  # config.model "Course" do
+  #   list do
+  #     field :lessons do
+  #       searchable [{ Lesson => :created_at }]
+  #     end
+
+  #     field :name do
+  #       searchable [{ Lesson => :created_at }]
+  #     end
+
+  #     scopes [:with_lessons]
+  #   end
+  # end
+
   config.actions do
     # root actions
     dashboard                     # mandatory

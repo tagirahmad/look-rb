@@ -7,4 +7,7 @@ class Course < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10, maximum: 300 }
   validates :trailer, presence: true
   validates :image, presence: true
+
+  # scope :with_lessons, -> { eager_load(:lessons) }
+  # scope :with_name, -> { eager_load(:name) }
 end
